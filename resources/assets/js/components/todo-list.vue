@@ -9,7 +9,8 @@
                     type="text" 
                     class="form-control" 
                     placeholder="Something to do..."
-                    v-model="text">
+                    v-model="text"
+                    @keyup.enter="addItem">
                 <span class="input-group-btn">
                     <button 
                         class="btn btn-primary" 
