@@ -44,6 +44,7 @@
         methods: {
             addItem () {
                 this.listItems.unshift(this.text)
+                this.text = ''
             }
         }
     }
