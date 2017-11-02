@@ -5,9 +5,16 @@
         <div class="panel-heading">Todo List</div>
         <div class="panel-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Something to do...">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Something to do..."
+                    v-model="text">
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">Add</button>
+                    <button 
+                        class="btn btn-primary" 
+                        type="button" 
+                        @click="addItem">Add</button>
                 </span>
             </div><!-- /input-group -->
         </div>
@@ -29,7 +36,14 @@
 
         data () {
             return {
-                listItems: ['fuck', 'shit', 'balls']
+                listItems: ['fuck', 'shit', 'balls'],
+                text: ''
+            }
+        },
+
+        methods: {
+            addItem () {
+                this.listItems.push(this.text)
             }
         }
     }
