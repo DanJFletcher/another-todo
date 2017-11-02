@@ -13,19 +13,26 @@
         </div>
 
         <!-- List group -->
-        <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+        <ul class="list-group" v-for="listItem in listItems">
+            <list-item :text="listItem"></list-item>
         </ul>
         </div>
     </div>
 </template>
 
 <script>
-    export default {}
+    import ListItem from './list-item'
+    export default {
+        components: {
+            'list-item': ListItem
+        },
+
+        data () {
+            return {
+                listItems: ['fuck', 'shit', 'balls']
+            }
+        }
+    }
 </script>
 
 <style>
