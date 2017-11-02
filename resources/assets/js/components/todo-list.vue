@@ -20,7 +20,7 @@
         </div>
 
         <!-- List group -->
-        <ul class="list-group" v-for="listItem in listItems">
+        <ul class="list-group" v-for="listItem in listItems" v-bind:key="listItem">
             <list-item :text="listItem"></list-item>
         </ul>
         </div>
@@ -43,7 +43,7 @@
 
         methods: {
             addItem () {
-                this.listItems.push(this.text)
+                this.listItems.unshift(this.text)
             }
         }
     }
