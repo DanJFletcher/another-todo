@@ -1,17 +1,16 @@
 <template>
-    <div>
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-md-2">
-                    <input @click="checkListItem" type="checkbox" aria-label="...">
-                </div>
-                <div class="col-md-10">
-                    <span class="text" v-bind:class="{ checked: isChecked }">
-                        {{ text }}
-                    </span>
-                </div>
-            </div>
-        </li>
+    <div class="row">
+        <div class="col-md-2">
+            <input @click="checkListItem" type="checkbox" aria-label="...">
+        </div>
+        <div class="col-md-8">
+            <span class="text" v-bind:class="{ checked: isChecked }">
+                {{ text }}
+            </span>
+        </div>
+        <div class="col-md-2">
+            <span @click="deleteListItem" class="close">X</span>
+        </div>
     </div>
 </template>
 
@@ -21,18 +20,24 @@ export default {
         text: {
             type: String,
             required: true
-        }
+        },
+        id: Number
     },
 
     data () {
         return {
-            isChecked: false
+            isChecked: false,
+            deleteed: false
         }
     },
 
     methods: {
         checkListItem () {
             this.isChecked = ! this.isChecked
+        },
+
+        deleteListItem () {
+            eventHub.$emit('delete-list-item', this.id)
         }
     }
 }
