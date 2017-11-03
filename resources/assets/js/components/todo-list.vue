@@ -10,8 +10,7 @@
                             v-model="text"
                         >
                         </input-text>
-                        <add-list-item>
-                        </add-list-item>
+                        <add-list-item></add-list-item>
                     </div><!-- /input-group -->
                 </div>
 
