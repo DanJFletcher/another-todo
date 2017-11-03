@@ -9,7 +9,9 @@
             </span>
         </div>
         <div class="col-md-2">
-            <span @click="deleteListItem" class="close">X</span>
+            <button @click="deleteListItem" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     </div>
 </template>
