@@ -21,8 +21,10 @@
         </div>
 
         <!-- List group -->
-        <ul class="list-group" v-for="listItem in listItems" v-bind:key="listItem">
-            <list-item :text="listItem"></list-item>
+        <ul class="list-group">
+            <li class="list-group-item" v-for="(value, index) in listItems" :key="index">
+                <list-item :text="value" :id="index"></list-item>
+            </li>
         </ul>
         </div>
     </div>
@@ -38,8 +40,12 @@
         data () {
             return {
                 listItems: ['fuck', 'shit', 'balls'],
-                text: ''
+                text: '',
             }
+        },
+
+        created: function () {
+            eventHub.$on('delete-list-item', this.deleteListItem)
         },
 
         methods: {
@@ -48,8 +54,12 @@
                     this.listItems.unshift(this.text)
                 }
                 this.text = ''
+            },
+
+            deleteListItem (id) {
+                this.listItems.splice(id, 1)
             }
-        }
+        },
     }
 </script>
 
