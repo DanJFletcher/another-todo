@@ -22,8 +22,8 @@
 
         <!-- List group -->
         <ul class="list-group">
-            <li class="list-group-item" v-for="(value, index) in listItems" :key="index">
-                <list-item :text="value" :id="index"></list-item>
+            <li class="list-group-item" v-for="listItem in listItems" :key="listItem.id">
+                <list-item :text="listItem.text" :id="listItem.id"></list-item>
             </li>
         </ul>
         </div>
@@ -32,6 +32,8 @@
 
 <script>
     import ListItem from './list-item'
+    import uuidv1 from 'uuid/v1'
+
     export default {
         components: {
             'list-item': ListItem
@@ -39,7 +41,7 @@
 
         data () {
             return {
-                listItems: ['fuck', 'shit', 'balls'],
+                listItems: [],
                 text: '',
             }
         },
@@ -51,13 +53,15 @@
         methods: {
             addItem () {
                 if (this.text.length > 0) {
-                    this.listItems.unshift(this.text)
+                    this.listItems.unshift({id: uuidv1(), text: this.text})
                 }
                 this.text = ''
             },
 
             deleteListItem (id) {
-                this.listItems.splice(id, 1)
+                this.listItems = this.listItems.filter(function (item) {
+                    return item.id !== id
+                })
             }
         },
     }
