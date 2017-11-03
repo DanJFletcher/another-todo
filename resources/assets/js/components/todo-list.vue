@@ -44,7 +44,9 @@
 
         methods: {
             addItem () {
-                this.listItems.unshift(this.text)
+                if (this.text.length > 0) {
+                    this.listItems.unshift(this.text)
+                }
                 this.text = ''
             }
         }
