@@ -21,14 +21,21 @@
             }
         },
 
+        created () {
+            eventHub.$on('clear-text', this.clearText)
+        },
+
         methods: {
             addItem () {
                 eventHub.$emit('add-list-item')
-                this.text = ''
             },
 
             updateText () {
                 eventHub.$emit('update-text', (this.text))
+            },
+
+            clearText () {
+                this.text = ''
             }
         }
     }

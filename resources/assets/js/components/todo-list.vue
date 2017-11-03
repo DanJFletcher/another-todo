@@ -56,6 +56,7 @@
                 if (this.text.length > 0) {
                     this.listItems.unshift({id: uuidv1(), text: this.text})
                 }
+                eventHub.$emit('clear-text')
             },
 
             deleteListItem (id) {
