@@ -45,7 +45,7 @@
             }
         },
 
-        created: function () {
+        created () {
             eventHub.$on('delete-list-item', this.deleteListItem)
             eventHub.$on('add-list-item', this.addListItem)
             eventHub.$on('update-text', this.updateText)
