@@ -18,7 +18,6 @@ window.eventHub = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
 Vue.component('todo-list', require('./components/todo-list.vue'));
 
 const app = new Vue({
