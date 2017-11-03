@@ -4,7 +4,7 @@
             <input @click="checkListItem" type="checkbox" aria-label="...">
         </div>
         <div class="col-md-8">
-            <span class="text" v-bind:class="{ checked: isChecked }">
+            <span class="text" v-bind:class="{ checked: checked }">
                 {{ text }}
             </span>
         </div>
@@ -28,13 +28,14 @@ export default {
 
     data () {
         return {
-            isChecked: false
+            checked: false
         }
     },
 
     methods: {
         checkListItem () {
-            this.isChecked = ! this.isChecked
+            this.checked = ! this.checked
+            eventHub.$emit('toggle-list-item', this.id)
         },
 
         deleteListItem () {

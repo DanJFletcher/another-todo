@@ -41,7 +41,7 @@
         data () {
             return {
                 listItems: [],
-                text: ''
+                text: '',
             }
         },
 
@@ -49,12 +49,13 @@
             eventHub.$on('delete-list-item', this.deleteListItem)
             eventHub.$on('add-list-item', this.addListItem)
             eventHub.$on('update-text', this.updateText)
+            eventHub.$on('toggle-list-item', this.toggleListItem)
         },
 
         methods: {
             addListItem () {
                 if (this.text.length > 0) {
-                    this.listItems.unshift({id: uuidv1(), text: this.text})
+                    this.listItems.unshift({id: uuidv1(), text: this.text, checked: false})
                 }
                 this.text = ''
                 eventHub.$emit('clear-text')
@@ -68,6 +69,11 @@
 
             updateText (text) {
                 this.text = text
+            },
+
+            toggleListItem (id) {
+                let item = this.listItems.find(item => item.id === id)
+                item.checked = ! item.checked
             }
         },
     }
