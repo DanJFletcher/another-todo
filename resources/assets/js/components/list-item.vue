@@ -23,7 +23,7 @@ export default {
             type: String,
             required: true
         },
-        id: Number
+        id: String
     },
 
     data () {

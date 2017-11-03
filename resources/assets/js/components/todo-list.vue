@@ -1,21 +1,20 @@
 <template>
     <div id="todo-list" class="center-block">
         <div class="panel panel-default">
-        <!-- Default panel contents -->
             <div class="panel-heading">Todo List</div>
                 <div class="panel-body">
                     <div class="input-group">
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Something to do..."
+                        <input-text
+                            classes="form-control"
+                            placeholder="Somthing to do..."
                             v-model="text"
-                            @keyup.enter="addItem">
+                        >
+                        </input-text>
                         <span class="input-group-btn">
                             <button 
                                 class="btn btn-primary" 
                                 type="button" 
-                                @click="addItem">Add</button>
+                                @click="addListItem">Add</button>
                         </span>
                     </div><!-- /input-group -->
                 </div>
@@ -33,36 +32,43 @@
 
 <script>
     import ListItem from './list-item'
+    import InputText from './input-text'
     import uuidv1 from 'uuid/v1'
 
     export default {
         components: {
-            'list-item': ListItem
+            'list-item': ListItem,
+            'input-text': InputText
         },
 
         data () {
             return {
                 listItems: [],
-                text: '',
+                text: ''
             }
         },
 
         created: function () {
             eventHub.$on('delete-list-item', this.deleteListItem)
+            eventHub.$on('add-list-item', this.addListItem)
+            eventHub.$on('update-text', this.updateText)
         },
 
         methods: {
-            addItem () {
+            addListItem () {
                 if (this.text.length > 0) {
                     this.listItems.unshift({id: uuidv1(), text: this.text})
                 }
-                this.text = ''
             },
 
             deleteListItem (id) {
                 this.listItems = this.listItems.filter(function (item) {
                     return item.id !== id
                 })
+            },
+
+            updateText (text) {
+                this.text = text
             }
         },
     }
