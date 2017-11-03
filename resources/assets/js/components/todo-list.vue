@@ -3,10 +3,10 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-xs-9 col-sm-10">
                         Todo List
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-xs-3 col-sm-2">
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                             <span class="caret"></span></button>

@@ -1,14 +1,14 @@
 <template>
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-xs-2">
             <input @click="checkListItem" type="checkbox" aria-label="...">
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
             <span class="text" v-bind:class="{ checked: checked }">
                 {{ text }}
             </span>
         </div>
-        <div class="col-md-2">
+        <div class="col-xs-2">
             <button @click="deleteListItem" type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -17,32 +17,32 @@
 </template>
 
 <script>
-export default {
-    props: {
-        text: {
-            type: String,
-            required: true
-        },
-        id: String
-    },
-
-    data () {
-        return {
-            checked: false
-        }
-    },
-
-    methods: {
-        checkListItem () {
-            this.checked = ! this.checked
-            eventHub.$emit('toggle-list-item', this.id)
+    export default {
+        props: {
+            text: {
+                type: String,
+                required: true
+            },
+            id: String
         },
 
-        deleteListItem () {
-            eventHub.$emit('delete-list-item', this.id)
+        data () {
+            return {
+                checked: false
+            }
+        },
+
+        methods: {
+            checkListItem () {
+                this.checked = ! this.checked
+                eventHub.$emit('toggle-list-item', this.id)
+            },
+
+            deleteListItem () {
+                eventHub.$emit('delete-list-item', this.id)
+            }
         }
     }
-}
 </script>
 
 <style>
