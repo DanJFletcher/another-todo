@@ -10,12 +10,8 @@
                             v-model="text"
                         >
                         </input-text>
-                        <span class="input-group-btn">
-                            <button 
-                                class="btn btn-primary" 
-                                type="button" 
-                                @click="addListItem">Add</button>
-                        </span>
+                        <add-list-item>
+                        </add-list-item>
                     </div><!-- /input-group -->
                 </div>
 
@@ -31,6 +27,7 @@
 </template>
 
 <script>
+    import AddListItem from './add-list-item'
     import ListItem from './list-item'
     import InputText from './input-text'
     import uuidv1 from 'uuid/v1'
@@ -38,7 +35,8 @@
     export default {
         components: {
             'list-item': ListItem,
-            'input-text': InputText
+            'input-text': InputText,
+            'add-list-item': AddListItem
         },
 
         data () {
